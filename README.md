@@ -7,4 +7,4 @@ Instance timer is an addon for Wildstar. It's written to keep track of time in a
 Before Version 1.0;
 
 * Find a way to get the instance start time so the countdown will be viable even if you enter an in-progress dungeon.
-* Translation of notification messages to German and French.
+* Translation of notification messages to French.
