@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Forms>
+    <Form Class="Window" LAnchorPoint="0" LAnchorOffset="0" TAnchorPoint="0" TAnchorOffset="0" RAnchorPoint="0" RAnchorOffset="168" BAnchorPoint="0" BAnchorOffset="38" RelativeToClient="1" Font="Default" Text="" BGColor="blue" TextColor="UI_WindowTextDefault" Template="Holo_Background_Datachron" TooltipType="OnCursor" Name="MedalTimer" Border="1" Picture="1" SwallowMouseClicks="1" Moveable="1" Escapable="0" Overlapped="1" TooltipColor="" TextId="" Tooltip="">
+        <Pixie LAnchorPoint="0" LAnchorOffset="128" TAnchorPoint="0" TAnchorOffset="6" RAnchorPoint="0" RAnchorOffset="100" BAnchorPoint="0" BAnchorOffset="100" Sprite="CRB_DatachronSprites:sprDCPP_SolCPTimedIcon" BGColor="white" TextColor="black" Rotation="0" Font="Default" DT_RIGHT="1" DT_BOTTOM="1" DT_SINGLELINE="1" DT_VCENTER="1" Text="" Width=""/>
+        <Control Class="Button" Base="BK3:btnHolo_Close" Font="DefaultButton" ButtonType="PushButton" RadioGroup="" LAnchorPoint="0" LAnchorOffset="145" TAnchorPoint="0" TAnchorOffset="0" RAnchorPoint="0" RAnchorOffset="174" BAnchorPoint="0" BAnchorOffset="20" DT_VCENTER="1" DT_CENTER="1" BGColor="UI_BtnBGDefault" TextColor="UI_BtnTextDefault" NormalTextColor="UI_BtnTextDefault" PressedTextColor="UI_BtnTextDefault" FlybyTextColor="UI_BtnTextDefault" PressedFlybyTextColor="UI_BtnTextDefault" DisabledTextColor="UI_BtnTextDefault" TooltipType="OnCursor" Name="CloseButton" TooltipColor="" Text="">
+            <Event Name="ButtonSignal" Function="TimerClose"/>
+        </Control>
+        <Control Class="Window" LAnchorPoint="0" LAnchorOffset="59" TAnchorPoint="0" TAnchorOffset="7" RAnchorPoint="0" RAnchorOffset="124" BAnchorPoint="0" BAnchorOffset="27" RelativeToClient="1" Font="Nameplates" Text="Starting" BGColor="UI_WindowBGDefault" TextColor="UI_WindowTextDefault" Template="Default" TooltipType="OnCursor" Name="cdTime" TooltipColor="" TextId="" DT_CENTER="1" DT_VCENTER="1"/>
+        <Control Class="Window" LAnchorPoint="0" LAnchorOffset="10" TAnchorPoint="0" TAnchorOffset="6" RAnchorPoint="0" RAnchorOffset="63" BAnchorPoint="0" BAnchorOffset="27" RelativeToClient="1" Font="CRB_Interface12" Text="Medal:" BGColor="UI_WindowBGDefault" TextColor="xkcdAmber" Template="Default" TooltipType="OnCursor" Name="cdLabel" TooltipColor="" TextId=""/>
+    </Form>
+</Forms>

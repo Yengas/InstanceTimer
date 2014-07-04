@@ -1,0 +1,9 @@
+local L = Apollo.GetPackage("Gemini:Locale-1.0").tPackage:NewLocale("InstanceTimer", "enUS", true)
+L["prefix"] = "InstanceTimer"
+L["loadError"] = "Could not load the main window for some reason."
+L["onFail"] = "Failed"
+L["failedMessage"] = "You have failed the time requirement for %s."
+L["countdownFormat"] = "%02.f:%02.f:%02.f"
+L["spentFormat"] = "%i hours, %i minutes, %i seconds"
+L["spentResponse"] = "You have been in %s for %s."
+L["notInInstance"] = "You're not in an instance."
