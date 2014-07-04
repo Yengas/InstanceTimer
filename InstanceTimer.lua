@@ -85,7 +85,6 @@ function InstanceTimer:OnDocLoaded()
 		Apollo.RegisterSlashCommand("instancetime", "onTimeRequest", self)
 		Apollo.RegisterEventHandler("MatchEntered", "onMatch", self)
 		Apollo.RegisterEventHandler("Group_Left", "onLeave", self)
-		Apollo.RegisterEventHandler("MatchFinished", "matchFinished", self)
 	end
 end
 
@@ -93,6 +92,10 @@ end
 -- InstanceTimerForm Functions
 -----------------------------------------------------------------------------------------------
 -- General Functions
+function interp(s, tab)
+  return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
+end
+
 function SecondsToClock(nSeconds, stringFormat)
 	if nSeconds <= 0 then
 		return L["onFail"];
@@ -100,7 +103,7 @@ function SecondsToClock(nSeconds, stringFormat)
 		nHours = math.floor(nSeconds/3600);
 		nMins = math.floor(nSeconds/60 - (nHours*60));
 		nSecs = math.floor(nSeconds - nHours*3600 - nMins *60);
-		return string.format(stringFormat, nHours, nMins, nSecs)
+		return interp(stringFormat, { h = nHours, m = nMins, s = nSecs })
 	end
 end
 
@@ -136,7 +139,6 @@ end
 
 function InstanceTimer:onMatch()
 	-- Leave/Enter detection
-	--if currentInstance ~= nil and currentInstance.finished == false then return end
 	if currentInstance ~= nil then return end
 	
 	self.countDownTimeText:SetText("Started")
@@ -152,7 +154,7 @@ end
 
 function InstanceTimer:onFail()
 	Sound.Play(alertSound)
-	PrintSystem(string.format(L["failedMessage"], currentInstance.name))
+	PrintSystem(interp(L["failedMessage"], { instance = currentInstance.name }))
 end
 
 function InstanceTimer:onLeave()
@@ -160,14 +162,9 @@ function InstanceTimer:onLeave()
 	currentInstance = nil
 end
 
-function InstanceTimer:matchFinished()
-	if currentInstance == nil then return; end
-	currentInstance.finished = true
-end
-
 function InstanceTimer:onTimeRequest()
 	if currentInstance == nil then PrintSystem(L["notInInstance"]); return; end
-	PrintSystem(string.format(L["spentResponse"], currentInstance.name, SecondsToClock(os.time() - currentInstance.enterTime, L["spentFormat"])))
+	PrintSystem(interp(L["spentResponse"], { instance = currentInstance.name, timeSpent = SecondsToClock(os.time() - currentInstance.enterTime, L["spentFormat"]) }))
 end
 
 -----------------------------------------------------------------------------------------------
