@@ -93,17 +93,21 @@ end
 -----------------------------------------------------------------------------------------------
 -- General Functions
 function interp(s, tab)
-  return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
+	return (s:gsub('($%b{})', function(w) return tab[w:sub(3, -2)] or w end))
 end
 
-function SecondsToClock(nSeconds, stringFormat)
+function SecondsToClock(nSeconds, stringFormat, interpolate)
 	if nSeconds <= 0 then
 		return L["onFail"];
 	else
 		nHours = math.floor(nSeconds/3600);
 		nMins = math.floor(nSeconds/60 - (nHours*60));
 		nSecs = math.floor(nSeconds - nHours*3600 - nMins *60);
-		return interp(stringFormat, { h = nHours, m = nMins, s = nSecs })
+		if interpolate then
+			return interp(stringFormat, { h = nHours, m = nMins, s = nSecs })
+		else
+			return string.format(stringFormat, nHours, nMins, nSecs)
+		end
 	end
 end
 
@@ -130,7 +134,7 @@ function InstanceTimer:onCount()
 	end
 	
 	difference = countTo - os.time()
-	self.countDownTimeText:SetText(SecondsToClock(difference, L["countdownFormat"]))
+	self.countDownTimeText:SetText(SecondsToClock(difference, L["countdownFormat"], false))
 	if difference <= 0 then
 		self:onFail()
 		countTo = nil
@@ -164,7 +168,7 @@ end
 
 function InstanceTimer:onTimeRequest()
 	if currentInstance == nil then PrintSystem(L["notInInstance"]); return; end
-	PrintSystem(interp(L["spentResponse"], { instance = currentInstance.name, timeSpent = SecondsToClock(os.time() - currentInstance.enterTime, L["spentFormat"]) }))
+	PrintSystem(interp(L["spentResponse"], { instance = currentInstance.name, timeSpent = SecondsToClock(os.time() - currentInstance.enterTime, L["spentFormat"], true) }))
 end
 
 -----------------------------------------------------------------------------------------------
