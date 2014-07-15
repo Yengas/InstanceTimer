@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Addon Author="Yengas" APIVersion="8" Name="InstanceTimer" Description="Shows you the time spent in current dungeon/adventure/battleground. Created for the purpose of keeping track of pve content medal times. ">
-	<Script Name="enUS.lua"/>
-	<Script Name="deDE.lua"/>
-	<Script Name="frFR.lua"/>
+<Addon Author="Yengas" APIVersion="9" Name="InstanceTimer" Description="Shows you the time spent in current dungeon/adventure/battleground. Created for the purpose of keeping track of pve content medal times. ">
+	<Script Name="libs/GeminiLocale/GeminiLocale.lua" /> 
+	<Script Name="locale/enUS.lua"/>
+	<Script Name="locale/deDE.lua"/>
+	<Script Name="locale/frFR.lua"/>
     <Script Name="InstanceTimer.lua"/>
     <Form Name="InstanceTimer.xml"/>
 </Addon>
