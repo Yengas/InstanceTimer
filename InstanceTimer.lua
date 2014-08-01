@@ -17,7 +17,7 @@ local timers = {
 	["Sanctuary of the Swordmaiden"] = 75 * 60,
 	["Skullcano Island"] = 45 * 60,
 	["Ruins of Kel Voreth"] = 40 * 60,
-	["Stormtalon's Lair"] = 30 * 60
+	["Stormtalon's Lair"] = 40 * 60
 }
 local shown = false -- initial state of the countdown timer window
 local L = Apollo.GetPackage("Gemini:Locale-1.0").tPackage:GetLocale("InstanceTimer", true)
